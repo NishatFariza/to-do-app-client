@@ -30,14 +30,11 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/">TaskItem</Link>
-            </li>
-            <li>
-              <Link to="/login">LogIn</Link>
+              <Link to="/">ToDoList</Link>
             </li>
           </ul>
         </div>
-        <Link to="/" class="btn btn-ghost normal-case text-2xl">
+        <Link to="/" class="btn btn-ghost normal-case text-3xl">
           ToDoList
         </Link>
       </div>
@@ -47,11 +44,9 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/login">TaskItem</Link>
+            <Link to="/login">ToDoList</Link>
           </li>
-          <li>
-            <Link to="/login">LogIn</Link>
-          </li>
+          
         </ul>
       </div>
     </div>
