@@ -97,7 +97,7 @@ const LogIn = () => {
             class="input input-bordered w-full max-w-xs"
           />
           <button type="submit" class="btn mt-4 w-5/12">
-            Button
+            Log In
           </button>
         </div>
       </form>
