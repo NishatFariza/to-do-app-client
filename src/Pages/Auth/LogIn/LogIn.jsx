@@ -5,7 +5,6 @@ import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
-
 import auth from "../../../firebase.init";
 import { sendPasswordResetEmail } from "firebase/auth";
 
