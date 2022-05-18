@@ -1,10 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LogIn = () => {
+const SignUp = () => {
   return (
     <div className="sm:w-4/12 w-11/12 mx-auto border rounded-md px-8  my-16 py-12">
-      <h3 className="text-3xl text-center font-bold text-slate-600">Log In</h3>
+      <h3 className="text-3xl text-center font-bold text-slate-600">Sign Up</h3>
+      <div class="form-control w-full max-w-xl">
+        <label class="label">
+          <span class="label-text">Name</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Your Name"
+          required
+          class="input input-bordered w-full max-w-xs"
+        />
+      </div>
       <div class="form-control w-full max-w-xl">
         <label class="label">
           <span class="label-text">Email</span>
@@ -39,9 +50,9 @@ const LogIn = () => {
       </div>
       <p className="my-5 text-xl font-semibold">
         <small>
-          New To Do App?
-          <Link className="ml-2 text-cyan-600" to="/signUp">
-            Create new account!!
+          Already have an account?
+          <Link className="ml-2 text-cyan-600" to="/logIn">
+            LogIn!!
           </Link>
         </small>
       </p>
@@ -51,4 +62,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignUp;
