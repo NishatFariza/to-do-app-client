@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div class="navbar bg-cyan-400 px-10">
+    <div class="navbar bg-cyan-400 lg:justify-around justify-between">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/login">TaskItem</Link>
+              <Link to="/">TaskItem</Link>
             </li>
             <li>
               <Link to="/login">LogIn</Link>
