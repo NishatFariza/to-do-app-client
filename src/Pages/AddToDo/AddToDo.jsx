@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
@@ -7,6 +7,7 @@ import Loading from "../Shared/Loading/Loading";
 
 const AddToDo = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [task, setTask] = useState([]);
 
   const handleAddTask = (event) => {
     event.preventDefault();
@@ -17,8 +18,7 @@ const AddToDo = () => {
       name: name,
       description: description,
     };
-
-    const url = `https://sheltered-sands-62975.herokuapp.com/`;
+    const url = `https://sheltered-sands-62975.herokuapp.com/todo`;
 
     axios
       .post(url, newTask)
@@ -26,6 +26,33 @@ const AddToDo = () => {
         console.log(response);
         if (response.data.insertedId) {
           toast.success("Task Added Successfully");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    const url = `https://sheltered-sands-62975.herokuapp.com/todos`;
+    axios
+      .get(url)
+      .then(function (response) {
+        setTask(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [task]);
+
+  const handleDelete = (id) => {
+    const url = `https://sheltered-sands-62975.herokuapp.com/todo/${id}`;
+    axios
+      .delete(url)
+      .then(function (response) {
+        console.log(response.data);
+        if (response.data.deletedCount) {
+          toast.success("Task Deleted Successfully");
         }
       })
       .catch(function (error) {
@@ -79,118 +106,33 @@ const AddToDo = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>
-                <button class="btn btn-square btn-outline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+            {task.map((data) => (
+              <tr key={data._id}>
+                <td>{data.name}</td>
+                <td>{data.description}</td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(data._id)}
+                    class="btn btn-square btn-outline"
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>
-                <button class="btn btn-square btn-outline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>
-                <button class="btn btn-square btn-outline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>
-                <button class="btn btn-square btn-outline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>
-                <button class="btn btn-square btn-outline">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </td>
-            </tr>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
