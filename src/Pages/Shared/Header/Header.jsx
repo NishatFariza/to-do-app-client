@@ -1,7 +1,10 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   return (
     <div class="navbar bg-cyan-400 lg:justify-around justify-between">
       <div class="navbar-start">
@@ -30,8 +33,17 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/toDoList">ToDoList</Link>
+              <Link to="/todolist">ToDoList</Link>
             </li>
+            {user ? (
+              <li>
+                <Link to="/login">Log Out</Link>
+              </li>
+            ) : (
+              <li>
+                <Link to="/login">Log In</Link>
+              </li>
+            )}
           </ul>
         </div>
         <Link to="/" class="btn btn-ghost normal-case text-3xl">
@@ -44,9 +56,11 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/login">ToDoList</Link>
+            <Link to="/todolist">ToDoList</Link>
           </li>
-          
+          <li>
+            <Link to="/login">Log In</Link>
+          </li>
         </ul>
       </div>
     </div>

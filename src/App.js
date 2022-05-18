@@ -19,7 +19,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<LogIn></LogIn>}></Route>
         <Route path='/signUp' element={<SignUp></SignUp>}></Route>
-        <Route path='toDoList' element={
+        <Route path='todolist' element={
           <RequireAuth>
             <AddToDo></AddToDo>
           </RequireAuth>

@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="py-8 bg-cyan-200">
       <div className="w-11/12 text-center mx-auto">
         <small className="footer-text sm:text-sm text-xs font-bold">
-          Copyright &copy; {year}. Motors
+          Copyright &copy; {year}. All Rights Reserved.
         </small>
       </div>
     </div>
