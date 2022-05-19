@@ -16,7 +16,7 @@ const Banner = () => {
           can help you track your short-term goals, ideas, and, accomplishments,
           while having an overall positive effect on your career.
         </p>
-        <Link className="btn btn-outline" to="/addList" type="submit">
+        <Link className="btn btn-outline" to="/todolist">
           Add List
         </Link>
       </div>
