@@ -70,7 +70,7 @@ const LogIn = () => {
     signInWithEmailAndPassword(email, password);
   };
   return (
-    <div className="sm:w-4/12 w-11/12 mx-auto border rounded-md px-8  my-16 py-12">
+    <div className="h-[calc(80vh-.8rem)] sm:w-4/12 w-11/12 mx-auto border rounded-md px-8  my-8 py-3">
       <h3 className="text-3xl text-center font-bold text-slate-600">Log In</h3>
       <form onSubmit={handleLogInUser} className="form-control w-full max-w-xl">
         <label className="label">

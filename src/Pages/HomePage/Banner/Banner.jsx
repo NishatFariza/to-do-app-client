@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="h-[80vh] flex justify-center items-center bg-slate-200">
+    <div className="h-[calc(80vh-.8rem)] flex justify-center items-center bg-slate-100">
       <div className="lg:w-8/12 w-11/12 text-center">
         <h1 className="text-5xl text-cyan-500 font font-extrabold">
           My To Do APP

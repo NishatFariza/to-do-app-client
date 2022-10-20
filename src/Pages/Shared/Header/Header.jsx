@@ -8,7 +8,7 @@ import { signOut } from "firebase/auth";
 const Header = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className="navbar bg-cyan-400 lg:justify-around justify-between">
+    <div className="navbar bg-teal-100 lg:justify-around justify-between shadow-md">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
